@@ -336,12 +336,12 @@ RoutingProtocol::GetTypeId()
                           "Access to the underlying UniformRandomVariable",
                           StringValue("ns3::UniformRandomVariable"),
                           MakePointerAccessor(&RoutingProtocol::m_uniformRandomVariable),
-                          MakePointerChecker<UniformRandomVariable>());
+                          MakePointerChecker<UniformRandomVariable>())
     	    .AddAttribute ("IsMalicious", "Is the node malicious",
                    BooleanValue (false),
                    MakeBooleanAccessor (&RoutingProtocol::SetMaliciousEnable,
                                         &RoutingProtocol::GetMaliciousEnable),
-                   MakeBooleanChecker ())
+                   MakeBooleanChecker ());
 
     ;
     return tid;
@@ -1513,9 +1513,9 @@ RoutingProtocol::RecvRequest(Ptr<Packet> p, Ipv4Address receiver, Ipv4Address sr
               if(IsMalicious)
               {
                 Ptr<NetDevice> dev = m_ipv4->GetNetDevice (m_ipv4->GetInterfaceForAddress (receiver));
-                RoutingTableEntry falseToDst(dev,dst,true,rreqHeader.GetDstSeqno()+100,m_ipv4->GetAddress (m_ipv4->GetInterfaceForAddress       (receiver),0),1,dst,ActiveRouteTimeout);
+                RoutingTableEntry falseToDst(dev,dst,true,rreqHeader.GetDstSeqno()+100,m_ipv4->GetAddress (m_ipv4->GetInterfaceForAddress       (receiver),0),1,dst,m_activeRouteTimeout);
 
-                SendReplyByIntermediateNode (falseToDst, toOrigin, rreqHeader.GetGratiousRrep ());
+                SendReplyByIntermediateNode (falseToDst, toOrigin, rreqHeader.GetGratuitousRrep ());
                  return;
               }
               /* Code for Blackhole Attack Simulation ends here */
