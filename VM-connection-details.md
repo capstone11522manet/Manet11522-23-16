@@ -1,1 +1,1 @@
-VM-connection-details.md
+.VM-connection-details.md
