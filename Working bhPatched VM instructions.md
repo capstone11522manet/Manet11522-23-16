@@ -62,9 +62,7 @@ cp /home/scitech/Manet9785-23-7/bhPatches_ns3.25/aodv-routing-protocol.h ns-3-de
 
 sudo apt install ccache cmake g++ mercurial qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools -y
 
-#up to here
 ./build.py --enable-examples --enable-tests
-
 
 cd ns-3-dev/
 
@@ -82,6 +80,7 @@ vi scratch/aodv.cc # terminal text editor - only keyboard works
 # insert 'anim.EnablePacketMetadata (true);' at line 161
 # Hit ESC key
 # Type ":wq" to save changes and exit the file
+
 ./ns3 run scratch/aodv.cc --cwd=capstone/ -- visual
 # Change "aodv.cc" file to whatever file you need - it's the file you'll be working on (work on files inside the "scratch" directory)
 ```
